@@ -43,7 +43,7 @@ router.post('/', function(pet, res){
         }).then(
           function(u){
             res.status(201);
-            res.location('https://localhost:3000/api/usuarios/' + u.id)
+            res.location('https://localhost:3000/usuarios/' + u.id)
             res.send("El usuario se ha creado correctamente");
           });
       }else {

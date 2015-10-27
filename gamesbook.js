@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 var usuarios = require('./routes/usuario');
-app.use('/usuarios', require('./routes/usuario'));
+app.use('/usuarios', usuarios);
 
 app.get('/', function(pet, res){
   res.status(200);
