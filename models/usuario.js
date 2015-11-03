@@ -8,17 +8,12 @@ module.exports = function(sequelize, DataTypes) {
       email: DataTypes.STRING,
       password: DataTypes.STRING,
       fecha_nac: DataTypes.DATEONLY
-    }, {
-    	name: {singular: 'Usuario', plural: 'Usuarios'}
-    }, {
+    },  {
       classMethods: {
         associate: function(models) {
-          Usuario.hasMany(Videojuego); // Dado un Usuario poder obtener todos los juegos que ha añadido.
-        } 
+          Usuario.hasMany(models.Videojuego); // Dado un Usuario poder obtener todos los juegos que ha añadido.
+        }
       }
     });
   return Usuario;
 };
-
-
-

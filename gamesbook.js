@@ -1,23 +1,5 @@
-// -------------------------------------------------------------------------------------------
-// API REST para GAMESBOOK
-var express = require('express');
-var app = express();
-var models = require('./models');
-var bodyParser = require('body-parser');
-
-app.use(bodyParser.json());
-
-var usuarios = require('./routes/usuario');
-app.use('/usuarios', usuarios);
-
-app.get('/', function(pet, res){
-  res.status(200);
-  res.send("<h1>Bienvenido a GAMESBOOK</h1>");
-});
-
-
-
 // ---------------------------------------------------------------------------------------------
+var models = require('./models');
 // Sincronización con la BBDD
 models.sequelize.sync({force:true}).then(function(){
   return models.Usuario.create({login:'Sergio'})
@@ -32,4 +14,21 @@ models.sequelize.sync({force:true}).then(function(){
   })
 });
 
-module.exports = app;
+// -------------------------------------------------------------------------------------------
+// API REST para GAMESBOOK
+var express = require('express');
+var app = express();
+var bodyParser = require('body-parser');
+
+app.use(bodyParser.json());
+
+var usuarios = require('./routes/usuario');
+app.use('/usuarios', usuarios);
+
+var videojuegos = require('./routes/videojuego');
+app.use('/videojuegos', videojuegos);
+
+app.get('/', function(pet, res){
+  res.status(200);
+  res.send("<h1>Bienvenido a GAMESBOOK</h1>");
+});
